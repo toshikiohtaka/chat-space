@@ -1,24 +1,18 @@
-# README
+#chat-space database設計
+-------------------------
+##必要なテーブルとカラム
+*users*
+-id
+-name(string)
+-group_id(integer)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*groups*
+-id
+-name (string)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*messages*
+-id
+-body(text)
+-image(string)
+-user_id(integer)
+-group_id(integer)
