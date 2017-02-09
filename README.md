@@ -4,11 +4,15 @@
 *users*
 - id
 - name(string)
-- group_id(integer)
 
 *groups*
 - id
 - name (string)
+
+*users_groups*
+- id
+- user_id(integer)
+- group_id(integer)
 
 *messages*
 - id
@@ -16,3 +20,7 @@
 - image(string)
 - user_id(integer)
 - group_id(integer)
+
+##アソシエーション
+- user has many groups, through users_groups
+- group has many users, through users_groups
