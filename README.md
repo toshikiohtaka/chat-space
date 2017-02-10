@@ -9,7 +9,7 @@
 - id
 - name (string)
 
-*users_groups*
+*group_users*
 - id
 - user_id(integer)
 - group_id(integer)
@@ -22,5 +22,14 @@
 - group_id(integer)
 
 ##アソシエーション
-- user has many groups, through users_groups
-- group has many users, through users_groups
+*user*
+- user has many group_users
+- user has many groups, through group_users
+- user has many messages
+*group*
+- group has many group_users
+- group has many users, through group_users
+- group has many messages
+*messages*
+- message belongs_to user
+- message belongs_to group
