@@ -1,0 +1,39 @@
+.chat
+  .chat-side
+    .chat-side__header
+      %h5 seo
+      .font-awesome
+        %a{class: "chat-user__action", href: ""}
+          %i{class: "fa fa-pencil-square-o"}
+        %a{class: "chat-user__action", href: ""}
+          %i{class: "fa fa-cog"}
+    %ul.chat-groups
+      %li.chat-group
+        %p.chat-group__name sample
+        %p.chat-group__message good bye world
+  .chat-main
+    .chat-header
+      .chat-header--left
+        %h2 sample
+        %p.chat-header__users Members: seo neko
+      .chat-header--right
+        %a{class: "chat-header__edit", href: ""}Edit
+    .chat-body
+      %ul.chat-messages
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__user seo
+            %p.chat-message__date 2016/9/21
+          .chat-message__text hello world
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__user neko
+            %p.chat-message__date 2016/9/21
+          .chat-message__text good bye world
+    .chat-footer
+      %form
+        .chat-footer__text
+          %textarea{placeholder: "type a message"}
+          %label{class: "chat-footer__file"}
+            %i{class: "fa fa-file-image-o"}
+        %input{type: "submit", value: "send"}
