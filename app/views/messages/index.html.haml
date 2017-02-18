@@ -5,7 +5,7 @@
       .font-awesome
         %a{class: "chat-user__action", href: ""}
           %i{class: "fa fa-pencil-square-o"}
-        %a{class: "chat-user__action", href: ""}
+        %a{class: "chat-user__action", href: "users/#{current_user.id}/edit"}
           %i{class: "fa fa-cog"}
     %ul.chat-groups
       %li.chat-group
