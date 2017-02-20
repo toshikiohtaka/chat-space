@@ -3,9 +3,9 @@
     .chat-side__header
       %h5 seo
       .font-awesome
-        %a{class: "chat-user__action", href: ""}
+        = link_to '.', class: "chat-user__action" do
           %i{class: "fa fa-pencil-square-o"}
-        %a{class: "chat-user__action", href: "users/edit"}
+        = link_to edit_user_path, class: "chat-user__action" do
           %i{class: "fa fa-cog"}
     %ul.chat-groups
       %li.chat-group
