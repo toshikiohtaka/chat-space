@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'messages#index'
-  resource :user
+  resource :user,　only: [:edit, :update]
 end
