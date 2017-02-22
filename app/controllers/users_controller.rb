@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(update_params)
-    # binding.pry
     redirect_to root_path
   end
 
