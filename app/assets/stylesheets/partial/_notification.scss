@@ -1,12 +1,12 @@
 .notice{
-  background-color: #38aef0;
+  background-color: $updateBlueColor;
   color: #fff;
   text-align: center;
   line-height: 30px;
 }
 
 .alert{
-  background-color: #d65f4c;
+  background-color: $errorRedColor;
   color: #fff;
   text-align: center;
   line-height: 30px;
