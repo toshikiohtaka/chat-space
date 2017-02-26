@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(name: group_params[:name])
-    redirect_to action: 'index'
+    Group.create(group_params)
+    redirect_to groups_path
   end
 
   private
