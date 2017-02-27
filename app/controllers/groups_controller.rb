@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(create_params)
-    redirect_to group_message_path
+    @group = Group.create(group_params)
+    redirect_to group_messages_path(@group)
   end
 
   def edit
