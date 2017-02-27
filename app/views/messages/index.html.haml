@@ -9,9 +9,11 @@
         = link_to edit_user_registration_path, class: "chat-user__action" do
           %i{class: "fa fa-cog"}
     %ul.chat-groups
-      %li.chat-group
-        %p.chat-group__name sample
-        %p.chat-group__message good bye world
+      - @groups.each do |group|
+        %li.chat-group
+          %p.chat-group__name
+            = group.name
+          %p.chat-group__message
   .chat-main
     .chat-header
       .chat-header--left

@@ -19,6 +19,7 @@
       .chat-group-form__field--right
         #chat-group-users
           #chat-group-user-22.chat-group-user.clearfix
+            = f.hidden_field "user_id", value: "#{current_user.id}", name: "group[user_ids][]"
             %p.chat-group-user_name.clearfix seo
     .chat-group-form__field.clearfix
       .chat-group-form__field--left

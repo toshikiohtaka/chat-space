@@ -13,9 +13,16 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def edit
+
+  end
+
+  def update
+  end
+
   private
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, user_ids: [])
   end
 end
