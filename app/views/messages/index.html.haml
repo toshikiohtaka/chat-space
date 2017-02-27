@@ -11,16 +11,18 @@
     %ul.chat-groups
       - @groups.each do |group|
         %li.chat-group
-          %p.chat-group__name
-            = group.name
-          %p.chat-group__message
+          = link_to group_messages_path(group), class: "link" do
+            %p.chat-group__name
+              = group.name
+            %p.chat-group__message
   .chat-main
     .chat-header
       .chat-header--left
-        %h2 sample
+        %h2
+          = @group.name
         %p.chat-header__users Members: seo neko
       .chat-header--right
-        %a{class: "chat-header__edit", href: ""} Edit
+        = link_to "Edit", edit_group_path(@group), class: "chat-header__edit"
     .chat-body
       %ul.chat-messages
         %li.chat-message

@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   
   def index
-    @groups = Group.all.order("created_at DESC")
+    @groups = current_user.groups.order("created_at DESC")
   end
 
   def new
@@ -9,15 +9,18 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(group_params)
-    redirect_to groups_path
+    @group = Group.create(create_params)
+    redirect_to group_message_path
   end
 
   def edit
-
+    @group = Group.find(params[:id])
   end
 
   def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)
+    redirect_to group_messages_path(@group)
   end
 
   private
