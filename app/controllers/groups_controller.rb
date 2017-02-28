@@ -1,16 +1,24 @@
 class GroupsController < ApplicationController
-  
+
   def index
     @groups = current_user.groups.order("created_at DESC")
   end
 
   def new
     @group = Group.new
+    @group.users << current_user
   end
 
   def create
-    @group = Group.create(group_params)
-    redirect_to group_messages_path(@group)
+    @group = Group.new(group_params)
+    if @group.name.empty?
+      redirect_to new_group_path
+      flash[:alert] = "グループ名を入力してください"
+    else
+      @group.save
+      redirect_to group_messages_path(@group)
+      flash[:notice] = "グループが作成されました"
+    end
   end
 
   def edit
