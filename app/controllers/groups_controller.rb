@@ -11,13 +11,12 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    if @group.name.empty?
-      redirect_to new_group_path
-      flash[:alert] = "グループ名を入力してください"
-    else
-      @group.save
+    if @group.save
       redirect_to group_messages_path(@group)
       flash[:notice] = "グループが作成されました"
+    else
+      redirect_to new_group_path
+      flash[:alert] = "グループ名を入力してください"
     end
   end
 
