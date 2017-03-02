@@ -20,7 +20,10 @@
       .chat-header--left
         %h2
           = @group.name
-        %p.chat-header__users Members: seo neko
+        %p.chat-header__users
+          Members：
+          - @members.each do |member|
+            = member.name
       .chat-header--right
         = link_to "Edit", edit_group_path(@group), class: "chat-header__edit"
     .chat-body
