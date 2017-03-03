@@ -12,20 +12,20 @@
         = link_to "Edit", edit_group_path(@group), class: "chat-header__edit"
     .chat-body
       %ul.chat-messages
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user seo
-            %p.chat-message__date 2016/9/21
-          .chat-message__text hello world
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user neko
-            %p.chat-message__date 2016/9/21
-          .chat-message__text good bye world
+        - @messages.each do |message|
+          %li.chat-message
+            .chat-message__header
+              %p.chat-message__user
+                = message.user.name
+              %p.chat-message__date
+                = message.created_at
+            .chat-message__text
+              = message.message
     .chat-footer
-      %form
+      = form_for [@group,@message] do |f|
         .chat-footer__text
-          %textarea{placeholder: "type a message"}
-          %label{class: "chat-footer__file"}
+          = f.text_area :message, placeholder: "type a message"
+          = f.hidden_field :user_id, value: current_user.id
+          = f.label class: "chat-footer__file" do
             %i{class: "fa fa-file-image-o"}
-        %input{type: "submit", value: "send"}
+        = f.submit "send"

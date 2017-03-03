@@ -14,7 +14,7 @@ html,body{
       height: 100px;
       line-height: 100px;
       background-color: #253141;
-      position: fixed;
+      position: absolute;
       width: 300px;
       h5{
         float: left;
@@ -91,6 +91,7 @@ html,body{
     .chat-body{
       height: calc(100% - 190px);
       background-color: #eeeeee;
+      overflow: scroll;
       position: relative;
       border: #eeeeee;
       .chat-messages{
