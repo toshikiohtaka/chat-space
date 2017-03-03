@@ -15,8 +15,7 @@ class GroupsController < ApplicationController
       redirect_to group_messages_path(@group)
       flash[:notice] = "グループが作成されました"
     else
-      redirect_to new_group_path
-      flash[:alert] = "グループ名を入力してください"
+      render 'new'
     end
   end
 
