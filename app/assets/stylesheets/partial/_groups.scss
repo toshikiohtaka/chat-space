@@ -54,6 +54,10 @@
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+      .chat-group-form__search{
+        margin: 0;
+        padding: 12px 0 0 0;
+      }
     }
 
     .chat-group-form__label {

@@ -1,0 +1,6 @@
+- if @group.errors.any?
+  #error_explanation2.alert.alert-danger
+    %ul
+      - @group.errors.full_messages.each do |message|
+        %li
+          = message

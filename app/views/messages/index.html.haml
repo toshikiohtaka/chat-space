@@ -1,26 +1,13 @@
 .chat
-  .chat-side
-    .chat-side__header
-      %h5
-        = current_user.name
-      .font-awesome
-        = link_to new_group_path, class: "chat-user__action" do
-          %i{class: "fa fa-pencil-square-o"}
-        = link_to edit_user_registration_path, class: "chat-user__action" do
-          %i{class: "fa fa-cog"}
-    %ul.chat-groups
-      - @groups.each do |group|
-        = link_to group_messages_path(group), class: "link" do
-          %li.chat-group
-            %p.chat-group__name
-              = group.name
-            %p.chat-group__message
+  = render partial: "groups/chat-side"
   .chat-main
     .chat-header
       .chat-header--left
         %h2
           = @group.name
-        %p.chat-header__users Members: seo neko
+        %p.chat-header__users
+          Members：
+          = render partial: "members"
       .chat-header--right
         = link_to "Edit", edit_group_path(@group), class: "chat-header__edit"
     .chat-body
