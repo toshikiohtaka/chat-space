@@ -1,5 +1,5 @@
 .chat
-  = render partial: "groups/chat-side"
+  = render partial: "groups/chat-side", locals: {groups: @groups}
   .chat-main
     .chat-header
       .chat-header--left
@@ -20,12 +20,11 @@
               %p.chat-message__date
                 = message.created_at
             .chat-message__text
-              = message.message
+              = message.body
     .chat-footer
       = form_for [@group,@message] do |f|
         .chat-footer__text
-          = f.text_area :message, placeholder: "type a message"
-          = f.hidden_field :user_id, value: current_user.id
+          = f.text_area :body, placeholder: "type a message"
           = f.label class: "chat-footer__file" do
             %i{class: "fa fa-file-image-o"}
         = f.submit "send"
