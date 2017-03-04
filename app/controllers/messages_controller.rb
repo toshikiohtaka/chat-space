@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
       @groups = current_user.groups.order(created_at: :DESC)
       @members = @group.users
       @messages = @group.messages
-      flash[:alert] = "メッセージを入力してください。"
       render 'index'
     end
   end
