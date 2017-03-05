@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = current_user.groups.order("created_at DESC")
+    @groups = current_user.groups.order(created_at: :DESC)
   end
 
   def new
