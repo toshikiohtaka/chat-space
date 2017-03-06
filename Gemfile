@@ -41,8 +41,6 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', "~> 3.1.0"
-  gem 'factory_girl_rails', "~> 4.4.1"
 end
 
 group :development do
@@ -56,8 +54,10 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rspec-rails'
+gem 'factory_girl_rails', "~> 4.4.1"
 gem "haml-rails", "~> 0.9"
 gem 'font-awesome-sass'
 gem 'devise'
-gem 'pry'
 gem 'erb2haml'
+gem 'pry-rails'
