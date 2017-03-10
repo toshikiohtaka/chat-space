@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @groups = current_user.groups.order(created_at: :DESC)
     @members = @group.users
-    @messages = @group.messages
     @message = current_user.messages.new
+    @messages = @group.messages
   end
 
   def create

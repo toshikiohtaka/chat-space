@@ -5,5 +5,5 @@ FactoryGirl.define do
     image      {Faker::Avatar.image}
     created_at {Faker::Time.between(2.days.ago, Time.now, :all)}
   end
-
+  
 end
