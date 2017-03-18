@@ -11,13 +11,10 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
-      redirect_to group_messages_path
-    else
-      @group = Group.find(params[:group_id])
-      @groups = current_user.groups.order(created_at: :DESC)
-      @members = @group.users
-      @messages = @group.messages
-      render 'index'
+      respond_to do |format|
+        format.html { redirect_to group_messages_path}
+        format.json { render json: @message}
+      end
     end
   end
 
