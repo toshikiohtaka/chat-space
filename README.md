@@ -1,5 +1,7 @@
 # chat-space database設計
+
 ## 必要なテーブルとカラム
+
 *users*
 - id
 - name(string)
@@ -21,6 +23,7 @@
 - group_id(integer)
 
 ## アソシエーション
+
 *user*
 - user has many group_users
 - user has many groups, through group_users
