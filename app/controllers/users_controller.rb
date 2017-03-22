@@ -1,17 +1,11 @@
 class UsersController < ApplicationController
+
+  def search
+    name = params[:user]
+    @results = User.where.not(id: current_user.id).where('name LIKE(?)', "%#{name}%")
+    respond_to do |format|
+      format.json
+    end
+  end
   
-  def edit
-
-  end
-
-  def update
-    current_user.update(update_params)
-    redirect_to root_path
-  end
-
-  private
-  def update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
 end

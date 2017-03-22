@@ -13,7 +13,7 @@ $(function() {
       url: './messages.json',
       data: {
         message: {
-          content: message
+          body: message
         }
       },
       dataType: 'json'

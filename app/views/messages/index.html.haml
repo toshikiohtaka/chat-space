@@ -23,7 +23,7 @@
             .chat-message__text
               = message.body
     .chat-footer
-      = form_for [@group,@message], class: 'js-form' do |f|
+      = form_for [@group,@message], class: 'js-form', remote: true do |f|
         .chat-footer__text
           = f.text_area :body, placeholder: "type a message", class: 'js-form__text-field'
           = f.label class: "chat-footer__file" do
