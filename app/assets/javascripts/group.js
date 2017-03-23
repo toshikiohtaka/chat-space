@@ -18,14 +18,12 @@ $(document).on('turbolinks:load', function () {
                 </li>`;
     $('#chat-group-users').append(html);
     user_ids.push(id);
-    console.log(user_ids);
   }
 
   function deleteUserId(user) {
     var user_id = user.find('a').data('user-id');
     var num     = user_ids.indexOf(user_id);
     user_ids.splice(num,1);
-    console.log(user_ids);
     user.remove();
   }
 
@@ -41,7 +39,8 @@ $(document).on('turbolinks:load', function () {
         url: '/users',
         data: {
           user: input
-        }
+        },
+        dataType: 'json'
       })
       .done(function(data) {
         $.each(data, function(i,user) {
