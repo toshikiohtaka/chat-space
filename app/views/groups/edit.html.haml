@@ -1,5 +1,5 @@
 .chat-group-form
-  %h1 チャットグループ編集
+  %h1 チャットグループの編集
   = form_for(@group) do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
@@ -18,7 +18,7 @@
         = f.label :チャットメンバー, class: "chat-group-form__label"
       .chat-group-form__field--right
         %ul#chat-group-users
-          %li.chat-group-added-users
+          %li.chat-group-added-user
             %input{name: 'group[user_ids][]', value: current_user.id, type: 'hidden'}
             =current_user.name
     .chat-group-form__field.clearfix
