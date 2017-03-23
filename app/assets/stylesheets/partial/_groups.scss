@@ -64,11 +64,6 @@
             font-size: 14px;
             border-bottom: 1px solid #ddd;
             height: 50px;
-            a {
-              float: right;
-              cursor: pointer;
-              color: $updateBlueColor;
-            }
           }
         }
       }
@@ -131,6 +126,12 @@
   font-size: 14px;
   border-bottom: 1px solid #ddd;
   height: 50px;
+}
+
+.user-btn--add {
+  float: right;
+  cursor: pointer;
+  color: $updateBlueColor;
 }
 
 .user-btn--delete {

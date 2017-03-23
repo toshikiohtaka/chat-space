@@ -54,8 +54,7 @@ $(document).on('turbolinks:load', function () {
       });
     }
   });
-  $('#chat-group-members').on('click','.user-btn--add',function(e) {
-    e.preventDefault
+  $('#chat-group-members').on('click','.user-btn--add',function() {
     var user = $(this).parent();
     var id   = user.data('user_id');
     if(user_ids.indexOf(id) == -1) {
@@ -63,8 +62,7 @@ $(document).on('turbolinks:load', function () {
       addUserToGroup(user);
     }
   });
-  $('#chat-group-users').on('click','.user-btn--delete', function(e) {
-    e.preventDefault
+  $('#chat-group-users').on('click','.user-btn--delete', function() {
     var user = $(this).parent();
     deleteUserId(user);
   })
