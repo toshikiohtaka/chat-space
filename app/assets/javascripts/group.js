@@ -3,26 +3,26 @@ $(document).on('turbolinks:load', function () {
   var user_ids = [];
 
   function addUser(user) {
-    var html = `<li class="chat-group-user"> ${user.name}
-                  <a class="add-user--btn" data-user-name="${user.name}" data-user-id="${user.id}"> 追加 </a>
+    var html = `<li class="chat-group-user" data-user-id="${user.id}" data-user-name="${user.name}"> ${user.name}
+                  <a class="user-btn--add"> 追加 </a>
                 </li>`;
     $('#chat-group-members').append(html);
   }
 
   function addUserToGroup(user) {
-    var name = user.find('a').data('user-name');
-    var id   = user.find('a').data('user-id');
+    var name = user.data('user-name');
+    var id   = user.data('user-id');
     var html = `<li class="chat-group-added-user"> ${name}
                   <input name="group[user_ids][]" value="${id}" type="hidden">
-                  <a class="delete-user--btn" data-user-id="${id}"> 削除 </a>
+                  <a class="user-btn--delete"> 削除 </a>
                 </li>`;
     $('#chat-group-users').append(html);
     user_ids.push(id);
   }
 
   function deleteUserId(user) {
-    var user_id = user.find('a').data('user-id');
-    var num     = user_ids.indexOf(user_id);
+    var id = user.data('user-id');
+    var num     = user_ids.indexOf(id);
     user_ids.splice(num,1);
     user.remove();
   }
@@ -54,16 +54,16 @@ $(document).on('turbolinks:load', function () {
       });
     }
   });
-  $('#chat-group-members').on('click','.add-user--btn',function(e) {
+  $('#chat-group-members').on('click','.user-btn--add',function(e) {
     e.preventDefault
     var user = $(this).parent();
-    var id   = user.find('a').data('user-id');
+    var id   = user.data('user_id');
     if(user_ids.indexOf(id) == -1) {
       user.remove();
       addUserToGroup(user);
     }
   });
-  $('#chat-group-users').on('click','.delete-user--btn', function(e) {
+  $('#chat-group-users').on('click','.user-btn--delete', function(e) {
     e.preventDefault
     var user = $(this).parent();
     deleteUserId(user);
