@@ -96,9 +96,10 @@ html,body{
       border: #eeeeee;
       .chat-messages{
         float: left;
-        margin-left: 40px;
+        left: 40px;
+        right: 40px;
         margin-top: 40px;
-        position: absolute;
+        margin-left: 40px;
         list-style: none;
         .chat-message{
           margin-bottom: 40px;
@@ -106,6 +107,7 @@ html,body{
             float: left;
             line-height: 20px;
             margin-bottom: 10px;
+            @include clearfix();
             .chat-message__user{
               float: left;
               margin-right: 10px;
@@ -120,6 +122,7 @@ html,body{
             }
           }
           .chat-message__text{
+            word-break: normal;
             font-size: 14px;
             color: #434a54;
           }

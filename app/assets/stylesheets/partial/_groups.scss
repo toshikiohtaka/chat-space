@@ -56,7 +56,16 @@
       width: 70%;
       .chat-group-form__search{
         margin: 0;
-        padding: 12px 0 0 0;
+        #chat-group-members {
+          clear: both;
+          .chat-group-user {
+            padding: 0 15px;
+            line-height: 50px;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+            height: 50px;
+          }
+        }
       }
     }
 
@@ -109,4 +118,24 @@
     background-color: $updateBlueColor;
     border: 0;
   }
+}
+
+.chat-group-added-user{
+  padding: 0 15px;
+  line-height: 50px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+}
+
+.user-btn--add {
+  float: right;
+  cursor: pointer;
+  color: $updateBlueColor;
+}
+
+.user-btn--delete {
+  float: right;
+  cursor: pointer;
+  color: $errorRedColor;
 }

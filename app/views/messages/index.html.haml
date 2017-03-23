@@ -15,17 +15,17 @@
       %ul.chat-messages
         - @messages.each do |message|
           %li.chat-message
-            .chat-message__header
+            .chat-message__header.clearfix
               %p.chat-message__user
                 = message.user.name
               %p.chat-message__date
                 = message.created_at
-            .chat-message__text
+            %p.chat-message__text
               = message.body
     .chat-footer
-      = form_for [@group,@message], class: 'js-form' do |f|
+      = form_for [@group,@message] do |f|
         .chat-footer__text
           = f.text_area :body, placeholder: "type a message", class: 'js-form__text-field'
           = f.label class: "chat-footer__file" do
             %i{class: "fa fa-file-image-o"}
-        = f.submit "send"
+        = f.submit "send", id: "chat-message-form__submit"
