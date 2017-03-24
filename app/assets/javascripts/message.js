@@ -13,27 +13,27 @@ $(document).on('turbolinks:load', function() {
       <p class="chat-message__text">
         ${message.body}
       </p>
+      <img src="${message.image.url}">
     </li>`
     $('.chat-messages').append(html);
   }
 
   $('#chat-message-form__submit').on('click', function(e) {
     e.preventDefault();
-    var textField = $('.js-form__text-field');
-    var input = textField.val();
+    var fd = new FormData($('#new_message').get(0));
     $.ajax({
       type: 'POST',
-      url: './messages.json',
-      data: {
-        message: {
-          body: input
-        }
-      },
+      url: './messages',
+      data: fd,
+      processData: false,
+      contentType: false,
       dataType: 'json'
     })
     .done(function(data) {
+      console.log(data);
       buildHTML(data);
-      textField.val('');
+      var test = $('.js-form__text-field').val('');
+      console.log(test);
     })
     .fail(function() {
       alert('error');
