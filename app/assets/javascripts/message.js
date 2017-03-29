@@ -1,5 +1,10 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
+    if(message.image) {
+      var image = `<img src="${message.image}">`
+    } else {
+      var image = ''
+    }
     var html = 
     `<li class="chat-message">
       <div class="chat-message__header">
@@ -13,7 +18,7 @@ $(document).on('turbolinks:load', function() {
       <p class="chat-message__text">
         ${message.body}
       </p>
-      <img src="${message.image.url}">
+      ${image}
     </li>`
     $('.chat-messages').append(html);
   }
@@ -30,10 +35,8 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(data) {
-      console.log(data);
       buildHTML(data);
-      var test = $('.js-form__text-field').val('');
-      console.log(test);
+      $('.js-form__text-field').val('');
     })
     .fail(function() {
       alert('error');
