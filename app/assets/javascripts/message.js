@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     $('.chat-messages').append(html);
   }
 
-  function ajax_message() {
+  function ajaxMessage() {
     var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: 'POST',
@@ -40,9 +40,9 @@ $(document).on('turbolinks:load', function() {
 
   $('#chat-message-form__submit').on('click', function(e) {
     e.preventDefault();
-    ajax_message();
+    ajaxMessage();
   });
   $('#file-input').on('change', function() {
-    ajax_message();
+    ajaxMessage();
   });
 });
