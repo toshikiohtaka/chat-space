@@ -1,9 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
-    var image = `<img src="${message.image}">`
-    if(message.image == null) {
-      var image = ''
-    }
+    var image = message.image ? image = `<img src="${message.image}">` : image = '';
     var html = 
     `<li class="chat-message">
       <div class="chat-message__header">
@@ -22,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     $('.chat-messages').append(html);
   }
 
-  function ajax() {
+  function ajax_message() {
     var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: 'POST',
@@ -43,9 +40,9 @@ $(document).on('turbolinks:load', function() {
 
   $('#chat-message-form__submit').on('click', function(e) {
     e.preventDefault();
-    ajax();
+    ajax_message();
   });
   $('#file-input').on('change', function() {
-    ajax();
+    ajax_message();
   });
 });
