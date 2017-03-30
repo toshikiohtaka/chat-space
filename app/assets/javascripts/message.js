@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
+    var image = message.image ? image = `<img src="${message.image}">` : image = '';
     var html = 
     `<li class="chat-message">
       <div class="chat-message__header">
@@ -13,30 +14,35 @@ $(document).on('turbolinks:load', function() {
       <p class="chat-message__text">
         ${message.body}
       </p>
+      ${image}
     </li>`
     $('.chat-messages').append(html);
   }
 
-  $('#chat-message-form__submit').on('click', function(e) {
-    e.preventDefault();
-    var textField = $('.js-form__text-field');
-    var input = textField.val();
+  function ajaxMessage() {
+    var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: 'POST',
-      url: './messages.json',
-      data: {
-        message: {
-          body: input
-        }
-      },
+      url: './messages',
+      data: formData,
+      processData: false,
+      contentType: false,
       dataType: 'json'
     })
     .done(function(data) {
       buildHTML(data);
-      textField.val('');
+      $('.js-form__text-field').val('');
     })
     .fail(function() {
       alert('error');
     });
+  }
+
+  $('#chat-message-form__submit').on('click', function(e) {
+    e.preventDefault();
+    ajaxMessage();
+  });
+  $('#file-input').on('change', function() {
+    ajaxMessage();
   });
 });

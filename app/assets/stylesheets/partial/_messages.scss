@@ -126,6 +126,10 @@ html,body{
             font-size: 14px;
             color: #434a54;
           }
+          img{
+          max-width: 300px;
+          max-height: 300px;
+          }
         }
       }
     }
@@ -174,3 +178,6 @@ html,body{
   }
 }
 
+#file-input{
+  display: none;
+}
