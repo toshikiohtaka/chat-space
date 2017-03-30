@@ -1,8 +1,7 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message) {
-    if(message.image) {
-      var image = `<img src="${message.image}">`
-    } else {
+    var image = `<img src="${message.image}">`
+    if(message.image == null) {
       var image = ''
     }
     var html = 
@@ -23,13 +22,12 @@ $(document).on('turbolinks:load', function() {
     $('.chat-messages').append(html);
   }
 
-  $('#chat-message-form__submit').on('click', function(e) {
-    e.preventDefault();
-    var fd = new FormData($('#new_message').get(0));
+  function ajax() {
+    var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: 'POST',
       url: './messages',
-      data: fd,
+      data: formData,
       processData: false,
       contentType: false,
       dataType: 'json'
@@ -41,5 +39,13 @@ $(document).on('turbolinks:load', function() {
     .fail(function() {
       alert('error');
     });
+  }
+
+  $('#chat-message-form__submit').on('click', function(e) {
+    e.preventDefault();
+    ajax();
+  });
+  $('#file-input').on('change', function() {
+    ajax();
   });
 });
