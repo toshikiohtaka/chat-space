@@ -21,8 +21,8 @@ $(document).on('turbolinks:load', function () {
   }
 
   function deleteUserId(user) {
-    var id = user.data('user-id');
-    var num     = user_ids.indexOf(id);
+    var id  = user.data('user-id');
+    var num = user_ids.indexOf(id);
     user_ids.splice(num,1);
     user.remove();
   }

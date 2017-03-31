@@ -1,11 +1,15 @@
 class MessagesController < ApplicationController
 
   def index
-    @group = Group.find(params[:group_id])
-    @groups = current_user.groups.order(created_at: :DESC)
-    @members = @group.users
-    @message = current_user.messages.new
+    @group    = Group.find(params[:group_id])
+    @groups   = current_user.groups.order(created_at: :DESC)
+    @members  = @group.users
+    @message  = current_user.messages.new
     @messages = @group.messages
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
