@@ -1,15 +1,9 @@
 class MessagesController < ApplicationController
+  
+  before_action :set_group, :set_message, only: [:index, :create]
 
   def index
-    @group = Group.find(params[:group_id])
-    @groups = current_user.groups.order(created_at: :DESC)
-    @members = @group.users
-    @message = current_user.messages.new
-    @messages = @group.messages
-    @newMessages = []
-    @messages.find_each(start: params[:id]) do |message|
-      @newMessages << message
-    end
+    @newMessages = @messages.where(["id > :id",{id: params[:id]}])
     respond_to do |format|
       format.html
       format.json
@@ -30,5 +24,14 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
   end
-  
+
+  def set_group
+    @group = Group.find(params[:group_id])
+    @groups = current_user.groups.order(created_at: :DESC)
+  end
+
+  def set_message
+    @message = current_user.messages.new
+    @messages = @group.messages
+  end
 end
