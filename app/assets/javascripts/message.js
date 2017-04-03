@@ -53,7 +53,6 @@ $(document).on('turbolinks:load', function() {
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
-    $('#chat-message-form__submit').removeAttr('data-disable-with');
     if($('#message_body').val() || $('#file-input').val()){
       $.ajax({
         type: 'POST',
@@ -73,6 +72,7 @@ $(document).on('turbolinks:load', function() {
         alert('error');
       });
     }
+    return false;
   });
   pageLoad();
 });
