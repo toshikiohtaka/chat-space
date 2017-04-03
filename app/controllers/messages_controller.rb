@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
-  before_action :set_group, :set_message, :set_new_message, only: [:index, :create]
+  before_action :set_group, :set_message, only: [:index, :create]
+  before_action :set_new_messages, only: [:index], if: :api_request?
 
   def index
     respond_to do |format|
@@ -24,6 +25,10 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
   end
 
+  def api_request?
+    request.format.json?
+  end
+
   def set_group
     @group = Group.find(params[:group_id])
     @groups = current_user.groups.order(created_at: :DESC)
@@ -34,7 +39,7 @@ class MessagesController < ApplicationController
     @messages = @group.messages
   end
 
-  def set_new_message
+  def set_new_messages
     @new_messages = @messages.where('id > ?', params[:id])
   end
 end
