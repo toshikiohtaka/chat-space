@@ -1,9 +1,8 @@
 class MessagesController < ApplicationController
-  
-  before_action :set_group, :set_message, only: [:index, :create]
+
+  before_action :set_group, :set_message, :set_new_message, only: [:index, :create]
 
   def index
-    @newMessages = @messages.where(["id > :id",{id: params[:id]}])
     respond_to do |format|
       format.html
       format.json
@@ -33,5 +32,9 @@ class MessagesController < ApplicationController
   def set_message
     @message = current_user.messages.new
     @messages = @group.messages
+  end
+
+  def set_new_message
+    @new_messages = @messages.where('id > ?', params[:id])
   end
 end

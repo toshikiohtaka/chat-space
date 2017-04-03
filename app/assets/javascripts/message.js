@@ -1,31 +1,3 @@
-$(document).on('turbolinks:load', function() {
-  $('#new_message').on('submit', function(e) {
-    e.preventDefault();
-    var formData = new FormData($(this).get(0));
-    $('#chat-message-form__submit').removeAttr('data-disable-with');
-    if($('#message_body').val() || $('#file-input').val()){
-      $.ajax({
-        type: 'POST',
-        url: './messages',
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: 'json'
-      })
-      .done(function(data) {
-        buildHTML(data);
-        $('.js-form__text-field').val('');
-        $('#new_message').get(0).reset();
-        scroll();
-      })
-      .fail(function() {
-        alert('error');
-      });
-    }
-  });
-  pageLoad();
-});
-
 var lastMessageId;
 
 function buildHTML(message) {
@@ -53,12 +25,6 @@ function scroll() {
     });
 }
 
-function pageLoad() {
-  if(window.location.href.match(/messages/)) {
-    setInterval(autoLoading, 1000);
-  }
-}
-
 function autoLoading() {
   lastMessageId = $('.chat-message').last().data('id');
   $.ajax({
@@ -71,11 +37,42 @@ function autoLoading() {
   })
   .done(function(data) {
     $.each(data, function(i, message) {
-      if(lastMessageId != message.id) {
-        buildHTML(message);
-        scroll();
-      }
+      buildHTML(message);
+      scroll();
     });
-  })
-  .fail(function() {});
+  });
 }
+
+function pageLoad() {
+  if(window.location.href.match(/messages/)) {
+    setInterval(autoLoading, 1000);
+  }
+}
+
+$(document).on('turbolinks:load', function() {
+  $('#new_message').on('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData($(this).get(0));
+    $('#chat-message-form__submit').removeAttr('data-disable-with');
+    if($('#message_body').val() || $('#file-input').val()){
+      $.ajax({
+        type: 'POST',
+        url: $(this).attr('action'),
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json'
+      })
+      .done(function(data) {
+        buildHTML(data);
+        $('.js-form__text-field').val('');
+        $('#new_message').get(0).reset();
+        scroll();
+      })
+      .fail(function() {
+        alert('error');
+      });
+    }
+  });
+  pageLoad();
+});
