@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json {@new_messages = @messages.where('id > ?', params[:id])}
+      format.json { @new_messages = @messages.where('id > ?', params[:id]) }
     end
   end
 
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path}
+        format.html { redirect_to group_messages_path }
         format.json
       end
     end

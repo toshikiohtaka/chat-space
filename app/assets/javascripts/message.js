@@ -64,14 +64,13 @@ $(document).on('turbolinks:load', function() {
       })
       .done(function(data) {
         buildHTML(data);
-        $('.js-form__text-field').val('');
-        $('#new_message').get(0).reset();
         scroll();
       })
       .fail(function() {
         alert('error');
       });
     }
+    $(this).get(0).reset();
     return false;
   });
   pageLoad();
