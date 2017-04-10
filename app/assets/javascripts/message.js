@@ -15,7 +15,7 @@ function buildHTML(message) {
                    message.body +
                  `</p>` +
                  image +
-               `</li>`
+               `</li>`;
   $('.chat-messages').append(html);
 }
 

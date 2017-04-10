@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
   function addUserToGroup(user) {
     var name = user.data('user-name');
     var id   = user.data('user-id');
-    var html = `<li class="chat-group-added-user">` + name +
+    var html =  `<li class="chat-group-added-user">` + name +
                   `<input name="group[user_ids][]" value="` + id + `type="hidden">` +
                   `<a class="user-btn--delete"> 削除` + `</a>` +
                 `</li>`;
