@@ -19,7 +19,7 @@
               %p.chat-message__user
                 = message.user.name
               %p.chat-message__date
-                = message.created_at
+                = message.created_at.to_s(:published_on)
             %p.chat-message__text
               = message.body
             = image_tag message.image
