@@ -5,7 +5,7 @@ function buildHTML(message) {
   var html  =  '<li class="chat-message" data-id="' + message.id + '">' +
                  '<div class="chat-message__header">' +
                    '<p class="chat-message__user">' + message.name + '</p>' +
-                   '<p class="chat-message__date">' + message.created_at.to_s(:published_on) + '</p>' +
+                   '<p class="chat-message__date">' + message.created_at + '</p>' +
                  '</div>' +
                  '<p class="chat-message__text">' + message.body + '</p>' +
                  image +
