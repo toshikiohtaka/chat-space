@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = current_user.messages.new
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
   end
 
 end
