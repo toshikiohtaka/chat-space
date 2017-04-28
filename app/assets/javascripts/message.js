@@ -10,7 +10,14 @@ function buildHTML(message) {
                  '<p class="chat-message__text">' + message.body + '</p>' +
                  image +
                '</li>';
-  $('.chat-messages').append(html);
+// 更新対象のdata-id=message.idのセレクタでDOMを取得する
+  var elem = $('[data-id=' + message.id + ']');
+//更新対象のDOMが存在する場合
+  if (elem[0]) {
+// 更新対象のDOMが存在しない場合は、append
+  }else{
+    $('.chat-messages').append(html);
+  };
 }
 
 function scroll() {
