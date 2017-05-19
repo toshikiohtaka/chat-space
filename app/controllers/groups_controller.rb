@@ -1,7 +1,9 @@
 class GroupsController < ApplicationController
 
+  after_action :current_user_exist?, only: :edit
+
   def index
-    @groups = current_user.groups.order(created_at: :DESC)
+    @groups = current_user.groups.includes(:messages).order(created_at: :DESC)
   end
 
   def new
@@ -21,6 +23,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @group_members = @group.users
   end
 
   def update

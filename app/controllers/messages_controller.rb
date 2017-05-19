@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   before_action :set_group, :set_message, only: [:index, :create]
+  before_action :current_user_exist?, only: :index
 
   def index
     respond_to do |format|
@@ -26,7 +27,7 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
-    @groups = current_user.groups.order(created_at: :DESC)
+    @groups = current_user.groups.includes(:messages).order(created_at: :DESC)
   end
 
   def set_message

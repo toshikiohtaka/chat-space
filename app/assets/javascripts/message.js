@@ -12,7 +12,7 @@ function buildHTML(message) {
                '</li>';
 // 更新対象のdata-id=message.idのセレクタでDOMを取得する
   var elem = $('[data-id=' + message.id + ']');
-//更新対象のDOMが存在する場合
+// 更新対象のDOMが存在する場合
   if (elem[0]) {
 // 更新対象のDOMが存在しない場合は、append
   }else{
@@ -54,6 +54,7 @@ $(document).on('turbolinks:load', function() {
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
+    console.log(formData);
     if($('#message_body').val() || $('#file-input').val()){
       $.ajax({
         type: 'POST',

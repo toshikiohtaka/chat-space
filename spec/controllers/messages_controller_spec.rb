@@ -7,7 +7,7 @@ describe MessagesController, type: :controller do
   let(:groups) {create_list(:group, 3, users: [user])}
   let(:message) {create(:message)}
   let(:messages) {create_list(:message, 3, group: group)}
-  
+
   before do
     login_user
   end
@@ -55,6 +55,10 @@ describe MessagesController, type: :controller do
       message = build(:message, body: '')
       message.valid?
       expect(message.errors[:body]).to include('を入力してください。')
+    end
+
+    it 'assigns the requested message to @message' do
+      expect(assigns(:message)).to eq message
     end
 
     it 'redirects to the :index template when a new message is saved' do

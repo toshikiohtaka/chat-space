@@ -1,0 +1,5 @@
+%li.chat-group-added-user
+  = group_members.name
+  %input{ name: 'group[user_ids][]', value: group_members.id, type: 'hidden' }
+  - unless current_user.id == group_members.id
+    %a.user-btn--delete 削除
