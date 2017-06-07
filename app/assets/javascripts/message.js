@@ -54,7 +54,6 @@ $(document).on('turbolinks:load', function() {
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
-    console.log(formData);
     if($('#message_body').val() || $('#file-input').val()){
       $.ajax({
         type: 'POST',
@@ -76,5 +75,4 @@ $(document).on('turbolinks:load', function() {
     return false;
   });
   pageLoad();
-  console.log("test");
 });
