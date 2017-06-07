@@ -76,4 +76,5 @@ $(document).on('turbolinks:load', function() {
     return false;
   });
   pageLoad();
+  console.log("test");
 });
