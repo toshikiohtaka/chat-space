@@ -25,6 +25,7 @@ gem 'fog'
 
 group :test do
   gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
